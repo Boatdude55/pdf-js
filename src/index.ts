@@ -308,3 +308,39 @@ export {
   type TextAnnotationStateModel,
   type TextMarkupAnnotationOptions,
 } from "./annotations";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Low-level API
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Experimental Content Stream Parsing API
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Low-level PDF content-stream parser.
+ *
+ * @experimental This API may evolve as additional low-level PDF
+ * interpretation features are exposed.
+ */
+export { ContentStreamParser } from "./content/parsing/content-stream-parser";
+
+export {
+  isInlineImageOperation,
+  isParsedOperation,
+} from "./content/parsing/types";
+
+export type {
+  AnyOperation,
+  ArrayToken,
+  BoolToken,
+  ContentToken,
+  DictToken,
+  InlineImageOperation,
+  NameToken,
+  NullToken,
+  NumberToken,
+  ParsedOperation,
+  ParseResult,
+  StringToken,
+} from "./content/parsing/types";
