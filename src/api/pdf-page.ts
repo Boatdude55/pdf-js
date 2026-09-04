@@ -429,6 +429,40 @@ export class PDFPage {
     return resources;
   }
 
+  /**
+   * Get the effective Resources dictionary without modifying the page.
+   *
+   * PDF pages can inherit Resources from ancestor Pages nodes. This method
+   * checks the page first, then walks the Parent chain until it finds a
+   * Resources dictionary. Unlike {@link getResources}, it does not create a
+   * page-local dictionary when no resources are found.
+   *
+   * @returns The effective Resources dictionary, or undefined if none exists
+   *
+   * @experiment
+   */
+  getEffectiveResources(): PdfDict | undefined {
+    const resolve = this.ctx.resolve.bind(this.ctx);
+    const visited = new Set<PdfDict>();
+    let current: PdfDict | undefined = this.dict;
+
+    while (current && !visited.has(current)) {
+      visited.add(current);
+
+      const resources = current.get("Resources", resolve);
+
+      if (resources instanceof PdfDict) {
+        return resources;
+      }
+
+      const parent = current.get("Parent", resolve);
+
+      current = parent instanceof PdfDict ? parent : undefined;
+    }
+
+    return undefined;
+  }
+  
   // ─────────────────────────────────────────────────────────────────────────────
   // Drawing
   // ─────────────────────────────────────────────────────────────────────────────
@@ -2864,6 +2898,31 @@ export class PDFPage {
     return searchPage(pageText, query, options);
   }
 
+  /**
+   * Iterate over the operations in this page's decoded content streams.
+   *
+   * Multiple content streams are parsed in execution order. This is a
+   * syntactic iterator: it does not interpret graphics state, resolve
+   * resources, or recurse into Form XObjects.
+   *
+   * @experiment
+   */
+  *iterateContentOperations(): IterableIterator<AnyOperation> {
+    yield* new ContentStreamParser(this.getContentBytes());
+  }
+
+  /**
+   * Returns the decoded page content streams in execution order.
+   *
+   * Multiple streams are joined with whitespace so adjacent tokens
+   * cannot accidentally merge.
+   *
+   * @experimental
+   */
+  public getDecodedContentBytes(): Uint8Array {
+    return this.getContentBytes();
+  }
+  
   /**
    * Get the concatenated content stream bytes.
    */
