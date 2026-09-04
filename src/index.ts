@@ -344,3 +344,104 @@ export type {
   ParseResult,
   StringToken,
 } from "./content/parsing/types";
+
+// Low-level types and resource interfaces
+export type {
+  AxialCoords,
+  AxialShadingOptions,
+  BBox,
+  BlendMode,
+  ColorStop,
+  ExtGStateOptions,
+  FormXObjectOptions,
+  ImagePatternOptions,
+  LinearGradientOptions,
+  PatternMatrix,
+  PDFExtGState,
+  PDFFormXObject,
+  PDFPattern,
+  PDFShading,
+  PDFShadingPattern,
+  PDFTilingPattern,
+  RadialCoords,
+  RadialShadingOptions,
+  ShadingPatternOptions,
+  TilingPatternOptions,
+} from "./drawing/resources/index";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Helpers
+// ─────────────────────────────────────────────────────────────────────────────
+
+export { parsePem, type PemBlock } from "./helpers/pem";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Annotations
+// ─────────────────────────────────────────────────────────────────────────────
+
+export {
+  // Types
+  AnnotationFlags,
+  type AnnotationSubtype,
+  type BorderStyle,
+  type BorderStyleType,
+  type CaretAnnotationOptions,
+  type CaretSymbol,
+  type CircleAnnotationOptions,
+  // Helpers
+  createAnnotation,
+  type DestinationType,
+  type FileAttachmentIcon,
+  type FlattenAnnotationsOptions,
+  type FreeTextAnnotationOptions,
+  type FreeTextJustification,
+  type HighlightMode,
+  type InkAnnotationOptions,
+  isPopupAnnotation,
+  isWidgetAnnotation,
+  type LineAnnotationOptions,
+  type LineEndingStyle,
+  type LinkAction,
+  type LinkAnnotationOptions,
+  type LinkDestination,
+  // Base classes
+  PDFAnnotation,
+  // Annotation types
+  PDFCaretAnnotation,
+  PDFCircleAnnotation,
+  PDFFileAttachmentAnnotation,
+  PDFFreeTextAnnotation,
+  PDFHighlightAnnotation,
+  PDFInkAnnotation,
+  PDFLineAnnotation,
+  PDFLinkAnnotation,
+  PDFMarkupAnnotation,
+  PDFPolygonAnnotation,
+  PDFPolylineAnnotation,
+  PDFPopupAnnotation,
+  PDFSquareAnnotation,
+  PDFSquigglyAnnotation,
+  PDFStampAnnotation,
+  PDFStrikeOutAnnotation,
+  PDFTextAnnotation,
+  PDFTextMarkupAnnotation,
+  PDFUnderlineAnnotation,
+  PDFUnknownAnnotation,
+  type Point,
+  type PolygonAnnotationOptions,
+  type PolylineAnnotationOptions,
+  type PopupOptions,
+  type Rect,
+  type RemoveAnnotationsOptions,
+  rectsToQuadPoints,
+  rectToQuadPoints,
+  type SquareAnnotationOptions,
+  STANDARD_STAMPS,
+  type StampAnnotationOptions,
+  type StampName,
+  type TextAnnotationIcon,
+  type TextAnnotationOptions,
+  type TextAnnotationState,
+  type TextAnnotationStateModel,
+  type TextMarkupAnnotationOptions,
+} from "./annotations";
