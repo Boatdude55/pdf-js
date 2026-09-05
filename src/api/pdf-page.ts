@@ -53,6 +53,8 @@ import type {
   TextMarkupAnnotationOptions,
 } from "#src/annotations/types";
 import type { Operator } from "#src/content/operators";
+import { ContentStreamParser } from "#src/content/parsing/content-stream-parser";
+import type { AnyOperation } from "#src/content/parsing/types";
 import { AcroForm } from "#src/document/forms/acro-form";
 import { AppearanceGenerator } from "#src/document/forms/appearance-generator";
 import {
