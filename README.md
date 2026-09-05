@@ -165,10 +165,11 @@ Real-world PDFs are messy. Export a document through three different tools and y
 
 - **High-level**: `PDF`, `PDFPage`, `PDFForm` for common tasks
 - **Low-level**: `PdfDict`, `PdfArray`, `PdfStream` for full control
+- **Even Lower-level**: `ContentStreamParser`, `PDFPage.getEffectiveResources()`, `PDFPage.iterateContentOperations()` for bespoke tasks
 
 ## Documentation
 
-Full documentation at [libpdf.dev](https://libpdf.dev)
+Original documentation at [libpdf.dev](https://libpdf.dev)
 
 ## Sponsors
 
